@@ -1,5 +1,5 @@
 // JoinRoomDialog.tsx
-import { useState, useRef } from "react";
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -42,8 +42,15 @@ export function JoinRoomDialog({ onJoinRoom }: JoinRoomDialogProps) {
       return;
     }
     setIsConnecting(true);
+
+    const DB_URI = import.meta.env.VITE_DB_URI;
+    if (!DB_URI) {
+      setError('DB_URI is not defined in the environment variables');
+      return;
+    }
+
     try {
-      const ws = new WebSocket("ws://localhost:3001/");
+      const ws = new WebSocket(DB_URI);
 
       ws.onopen = () => {
         // Send join room message

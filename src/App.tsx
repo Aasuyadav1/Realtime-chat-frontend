@@ -15,7 +15,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex w-full border border-red-800 flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <h1 className="text-2xl font-bold mb-4">Welcome to the Chat App</h1>
       <JoinRoomDialog onJoinRoom={handleJoinRoom} />
       {currentRoom && wsRef.current && username && (

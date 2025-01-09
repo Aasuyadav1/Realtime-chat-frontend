@@ -86,12 +86,12 @@ export function ChatCard({ roomName, ws, username }: ChatCardProps) {
     };
 
     // Add user message to local state
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      type: "send",
-      role: "user",
-      content: input.trim(),
-    };
+    // const userMessage: Message = {
+    //   id: Date.now().toString(),
+    //   type: "send",
+    //   role: "user",
+    //   content: input.trim(),
+    // };
 
     // setMessages(prev => [...prev, userMessage])
 
@@ -108,7 +108,7 @@ export function ChatCard({ roomName, ws, username }: ChatCardProps) {
   }, [roomName]);
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="max-w-lg w-full" >
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           Chat Room: {roomName}
@@ -119,12 +119,12 @@ export function ChatCard({ roomName, ws, username }: ChatCardProps) {
           />
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="!w-full">
         <ScrollArea className="h-[300px] w-full pr-4" ref={scrollAreaRef}>
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`mb-4 p-2 rounded ${
+              className={`mb-4 p-2 rounded w-full ${
                 message.role === username
                   ? "bg-blue-100 ml-8"
                   : "bg-gray-100 mr-8"
